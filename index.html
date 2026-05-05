@@ -15,16 +15,19 @@
 
     <!-- ── NAVBAR ── -->
     <nav>
-        <!-- <div class="logo">Helper<span>Man</span></div> -->
-          <a href="#hero" class="logo">Helper<span class="dot">Man</span></a>
-        <ul class="nav-links">
+        <a href="#hero" class="logo">Helper<span class="dot">Man</span></a>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#services">Services</a></li>
             <li><a href="#how">How It Works</a></li>
             <li><a href="#why">Why Us</a></li>
             <li><a href="#pricing">Pricing</a></li>
-            <!-- <li><a href="#contact">Contact</a></li> -->
             <li><a href="#contact" class="nav-cta">Get Started</a></li>
         </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- ── HERO ── -->
@@ -467,15 +470,34 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Contact form submit feedback
         document.querySelector('.form-submit').addEventListener('click', function () {
-            this.textContent = '✓ Message Sent!';
+            this.textContent = '\u2713 Message Sent!';
             this.style.background = '#1db885';
             setTimeout(() => {
-                this.textContent = 'Send Message →';
+                this.textContent = 'Send Message \u2192';
                 this.style.background = '';
             }, 3000);
         });
 
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const target = document.querySelector(a.getAttribute('href'));
