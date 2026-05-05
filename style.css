@@ -20,8 +20,6 @@
 
   html {
       scroll-behavior: smooth;
-      scroll-padding-top: 68px;
-      /* accounts for fixed navbar on all anchor links */
   }
 
   body {
@@ -105,6 +103,7 @@
       padding: 100px 5% 80px;
       position: relative;
       overflow: hidden;
+      scroll-margin-top: 0;
   }
 
   .hero-bg-circle {
@@ -317,18 +316,20 @@
 
   /* ── SECTION SHELL ── */
   section {
-      padding: 96px 5%;
-      scroll-margin-top: 68px;
-      /* offset for fixed navbar */
+      min-height: 100vh;
+      padding: 100px 5% 80px;
+      width: 100%;
+      position: relative;
   }
 
   #hero {
-      scroll-margin-top: 0;
-      /* hero fills full viewport from top */
+      padding: 100px 5% 80px;
   }
 
   .section-inner {
       max-width: 1200px;
+      width: 100%;
+      /* span full available width */
       margin: 0 auto;
   }
 
@@ -1117,7 +1118,9 @@
 
       /* SECTIONS */
       section {
-          padding: 72px 5%;
+          min-height: auto;
+          /* let content define height on mobile */
+          padding: 90px 5% 60px;
       }
 
       /* HOW IT WORKS */
@@ -1201,7 +1204,9 @@
 
       /* SECTIONS */
       section {
-          padding: 56px 4%;
+          min-height: auto;
+          /* let content define height on small mobile */
+          padding: 80px 4% 48px;
       }
 
       .section-sub {
